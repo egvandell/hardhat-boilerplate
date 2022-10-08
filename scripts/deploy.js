@@ -22,11 +22,20 @@ async function main() {
 
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
-  const Token = await ethers.getContractFactory("Token");
+  const Token = await ethers.getContractFactory("EngToken");
   const token = await Token.deploy();
   await token.deployed();
 
   console.log("Token address:", token.address);
+
+
+
+  await token.transfer("0x48c73191212c039e7c8c2660473dfa7d60d59b4d", 200000);
+  console.log("%s tokens deployed to %s", 200000, "0x48c73191212c039e7c8c2660473dfa7d60d59b4d");
+
+
+
+
 
   // We also save the contract's artifacts and address in the frontend directory
   saveFrontendFiles(token);
@@ -45,10 +54,10 @@ function saveFrontendFiles(token) {
     JSON.stringify({ Token: token.address }, undefined, 2)
   );
 
-  const TokenArtifact = artifacts.readArtifactSync("Token");
+  const TokenArtifact = artifacts.readArtifactSync("EngToken");
 
   fs.writeFileSync(
-    path.join(contractsDir, "Token.json"),
+    path.join(contractsDir, "EngToken.json"),
     JSON.stringify(TokenArtifact, null, 2)
   );
 }
