@@ -11,6 +11,9 @@ const GOERLI_PRIVATE_KEY = "YOUR GOERLI PRIVATE KEY";
 
 module.exports = {
   solidity: "0.8.9",
+  etherscan: {
+    apiKey: "HNKYNPJYQI35JF8QQI76TUF4M8MX26WGMI" 
+  },
   networks: {
     goerli: {
       url: `https://eth-goerli.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
